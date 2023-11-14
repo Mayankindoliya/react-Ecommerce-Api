@@ -8,9 +8,11 @@ const mongoose = require("mongoose");
 const Middlewares= require('./helpers/middlewares')
 const Router = require('./routes')
 
+app.use(cors())
 app.use(express.json())
-app.use(Middlewares.errorHandlersMiddleware);
+app.use(Middlewares.authenticationMiddleware);
 app.use(Router);
+app.use(Middlewares.errorHandlersMiddleware);
 
 
 // Database and server connection
